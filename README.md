@@ -14,3 +14,5 @@ A more concrete example would be:
 ```sh
 netns-exec private sway
 ```
+
+For this to be runnable as a normal user without sudo, you need to set the `setuid` bit (and the executable should be owned by root ofc). As soon as we've switched network namespace (a privileged operation), we drop privileges.
