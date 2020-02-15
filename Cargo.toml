@@ -3,6 +3,12 @@ name = "netns-exec"
 version = "0.1.0"
 authors = ["John Axel Eriksson <john@insane.se>"]
 edition = "2018"
+description = "Execute process in Linux network namespace"
+repository = "https://github.com/johnae/netns-exec"
+readme = "README.md"
+license = "MIT"
+keywords = ["cli", "terminal"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
