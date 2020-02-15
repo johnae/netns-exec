@@ -26,7 +26,7 @@ checksum = "d515b1f41455adea1313a4a2ac8a8a477634fbae63cc6100e3aebb207ce61558"
 
 [[package]]
 name = "netns-exec"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "nix",
 ]
