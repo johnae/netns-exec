@@ -1,6 +1,6 @@
 [package]
 name = "netns-exec"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["John Axel Eriksson <john@insane.se>"]
 edition = "2018"
 description = "Execute process in Linux network namespace"
