@@ -9,11 +9,12 @@ use std::env;
 use std::ffi::CString;
 
 fn main() {
-    if env::args().len() < 3 {
+    let nsname = if env::args().len() > 2 {
+        env::args().nth(1).unwrap()
+    } else {
         panic!("Please supply at least 2 arguments - the network namespace then the command (and any arguments to that command)");
-    }
+    };
 
-    let nsname = env::args().into_iter().skip(1).next().unwrap();
     unshare(CloneFlags::CLONE_NEWNET).expect("Failed to unshare network namespace");
 
     let nspath = format!("/var/run/netns/{}", nsname);
