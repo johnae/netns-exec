@@ -12,12 +12,17 @@ fn main() {
     let nsname = if env::args().len() > 2 {
         env::args().nth(1).unwrap()
     } else {
-        panic!("Please supply at least 2 arguments - the network namespace then the command (and any arguments to that command)");
+        panic!("Please supply at least 2 arguments - the network namespace name or the pid of a process whose netns you want to enter, then the command and any arguments to that command");
     };
 
     unshare(CloneFlags::CLONE_NEWNET).expect("Failed to unshare network namespace");
 
-    let nspath = format!("/var/run/netns/{}", nsname);
+    let nspath = if nsname.parse::<i32>().is_ok() {
+        format!("/proc/{}/ns/net", nsname)
+    } else {
+        format!("/var/run/netns/{}", nsname)
+    };
+
     let nsfd = open(nspath.as_str(), OFlag::O_RDONLY, Mode::empty())
         .expect(&format!("Could not open netns file: {}", nspath));
 
